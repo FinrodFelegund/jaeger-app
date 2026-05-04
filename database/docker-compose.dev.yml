@@ -1,0 +1,20 @@
+services:
+  db:
+    container_name: jaeger-postgres-dev
+    image: imresamu/postgis:17-master
+    ports:
+      - "127.0.0.1:5435:5432"
+    env_file:
+      - ./docker.env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 1s
+      timeout: 1s
+      retries: 5
+
+volumes:
+  db-data:
+    

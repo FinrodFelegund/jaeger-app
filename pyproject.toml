@@ -1,0 +1,32 @@
+[project]
+name = "jaeger-app"
+version = "0.1.0"
+description = "Zum grünen Jäger Barber Website Backend"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+	"django>=5.2.8",
+	"django-cors-headers>=4.8.0",
+	"djangorestframework>=3.16.1",
+	"djangorestframework-gis>=1.2.0",
+	"gunicorn>=23.0.0",
+	"python-dotenv>=1.2.2",
+]
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 140
+lint.select = ["E", "F", "W", "I", "D", "A", "N", "B", "SIM", "C4", "TID"]
+lint.ignore = [
+	"D100",
+	"D101",
+]
+exclude = ["docs", ".venv"]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ty.rules]
+unresolved-attribute = "ignore"
